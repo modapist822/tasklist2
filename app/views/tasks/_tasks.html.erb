@@ -1,0 +1,16 @@
+<ul class="list-unstyled">
+  <% tasks.each do |task| %>
+
+      <div class="media-body">
+        <div>
+          <p>タスク作成者：<%= current_user.name %></p> 
+          <span class="text-muted">posted at <%= task.created_at %></span>
+        </div>
+        <div>
+          <p>タスク内容：<%= task.content %></p>
+          <p>タスクステータス：<%= task.status %></p>
+        </div>
+
+  <% end %>
+  <%= paginate tasks %>
+</ul>
