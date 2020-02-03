@@ -6,13 +6,12 @@ class TasksController < ApplicationController
   
   
   def index
-    if logged_in?
-      @task = current_user.tasks.build
-      @tasks = current_user.tasks.order(id: :desc).page(params[:page])
-    end  
+    @task = current_user.tasks.build
+    @tasks = current_user.tasks.order(id: :desc).page(params[:page])
   end
 
   def show
+    set_message
   end
 
   def new
@@ -27,7 +26,7 @@ class TasksController < ApplicationController
       redirect_to root_url
     else
       flash[:danger] = 'Task が投稿されませんでした'
-      redirect_to root_url
+      render :new
     end
   end
 

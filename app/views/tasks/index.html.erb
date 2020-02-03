@@ -8,20 +8,7 @@
   <% end %>
 </ul>
 
-  <div class="row">
-    <aside class="col-sm-4">
-      <%= form_with(model: @task, local: true) do |f| %>
-        <div class="form-group">
-          <p>タスク内容</p>
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
-          <p>タスクステータス</p>
-          <%= f.text_area :status, class: 'form-control', rows: 5 %>
-        </div>
-        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
-      <% end %>
-    </aside>
-
-  </div>
+<%= link_to '新規タスクの投稿', new_task_path %>
 
 
 <% else %>
