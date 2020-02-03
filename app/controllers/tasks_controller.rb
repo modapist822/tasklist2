@@ -5,7 +5,6 @@ class TasksController < ApplicationController
 
   
   def index
-    @task = current_user.tasks.build
     @tasks = current_user.tasks.order(id: :desc).page(params[:page])
   end
 
@@ -30,6 +29,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @tasks = Task.find(params[:id])
   end
 
   def update
@@ -45,6 +45,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @tasks = Task.find(params[:id])
     @tasks.destroy
 
     flash[:success] = 'タスク は正常に削除されました'
